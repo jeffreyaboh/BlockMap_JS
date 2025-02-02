@@ -14,7 +14,7 @@
     "BlockMap.dev"
   ],
   "author": "Ethion Technologies",
-  "license": "ISC",
+  "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/jeffreyaboh/BlockMap_JS/issues"
   },
