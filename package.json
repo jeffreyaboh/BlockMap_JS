@@ -1,22 +1,53 @@
 {
   "name": "blockmap_js",
-  "version": "1.0.1",
-  "description": "BlockMap JS Plugin",
+  "version": "1.0.0",
+  "description": "A powerful JavaScript plugin for integrating with the BlockMap.dev API service, providing seamless authentication and server interaction capabilities.",
   "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "plugin/",
+    "index.js",
+    "index.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node demo/tests/index.js",
+    "demo": "node demo/index.js",
+    "prepublishOnly": "echo 'Ready for NPM publishing'"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   },
   "dependencies": {
     "axios": "^1.10.0"
+  },
+  "devDependencies": {
+    "express": "^4.18.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jeffreyaboh/BlockMap_JS.git"
   },
   "keywords": [
-    "BlockMap.dev"
+    "blockmap",
+    "api",
+    "javascript",
+    "nodejs",
+    "authentication",
+    "blockchain",
+    "ethereum",
+    "plugin",
+    "sdk",
+    "client",
+    "ethion",
+    "web3"
   ],
-  "author": "Ethion Technologies",
+  "author": {
+    "name": "Ethion Technologies",
+    "email": "developer@ethion.cloud",
+    "url": "https://blockmap.dev"
+  },
   "license": "GPL-3.0-only",
   "bugs": {
     "url": "https://github.com/jeffreyaboh/BlockMap_JS/issues"
