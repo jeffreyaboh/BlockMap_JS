@@ -307,7 +307,7 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 - **Issues**: [GitHub Issues](https://github.com/jeffreyaboh/BlockMap_JS/issues)
 - **Documentation**: [GitHub Repository](https://github.com/jeffreyaboh/BlockMap_JS)
-- **Email**: developer@ethion.cloud
+- **Email**: support@trovilo.co
 
 ## 🏢 About Ethion Technologies
 
