@@ -13,14 +13,16 @@ function handleAxiosError(error) {
 }
 
 module.exports = { 
-    pingServer
+    getAuthenticationToken 
 };
 
-async function pingServer(event = 'ping') {
+async function getAuthenticationToken(email, apiKey) {
+    if (typeof email !== 'string' || !email) throw new Error('Email is required');
+    if (typeof apiKey !== 'string' || !apiKey) throw new Error('API Key is required');
     try {
         const { data } = await axios.get(
-            `${constants.server.API_URL}${constants.server.API_VERSION}`,
-            { headers: HEADERS, params: { event } }
+            `${constants.server.API_URL}${constants.server.API_VERSION}/authentication`,
+            { headers: HEADERS, params: { email, api_key: apiKey } }
         );
         return data;
     } catch (error) { handleAxiosError(error); }

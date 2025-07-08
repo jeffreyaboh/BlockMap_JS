@@ -1,3 +1,4 @@
+const authentication = require('./plugin/authentication.js');
 const misc = require('./plugin/misc.js');
 
 class BlockMapPlugin {
@@ -30,10 +31,10 @@ class BlockMapPlugin {
         if (!this.email) errors.push('Missing EMAIL');
         if (!this.apiKey) errors.push('Missing API_KEY');
         try {
-            const authentication = await misc.getAuthenticationToken(this.email, this.apiKey);
+            const auth = await authentication.getAuthenticationToken(this.email, this.apiKey);
             return {
                 status: errors.length ? 'unhealthy' : 'healthy',
-                authentication: authentication?.data || null,
+                authentication: auth?.data || null,
                 credentials: { email: !!this.email, api_key: !!this.apiKey },
                 ...(errors.length && { errors }),
                 timestamp: new Date().toISOString()
@@ -49,7 +50,7 @@ class BlockMapPlugin {
 
     async getAuthenticationToken() {
         try {
-            return await misc.getAuthenticationToken(this.email, this.apiKey);
+            return await authentication.getAuthenticationToken(this.email, this.apiKey);
         } catch (error) { throw this.handleApiError(error, 'getAuthenticationToken'); }
     }
 }
