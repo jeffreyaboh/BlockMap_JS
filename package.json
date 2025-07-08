@@ -1,6 +1,6 @@
 {
   "name": "blockmap_js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BlockMap JS Plugin",
   "main": "index.js",
   "scripts": {
