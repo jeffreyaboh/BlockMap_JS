@@ -24,17 +24,21 @@ class BlockMapPlugin {
         if (errors.length)
             throw new Error(`❌ Configuration validation failed:\n• ${errors.join('\n• ')}`);
     }
-    
-    healthCheck() {
+
+    async healthCheck() {
         const errors = [];
         if (!this.email) errors.push('Missing EMAIL');
         if (!this.apiKey) errors.push('Missing API_KEY');
-        return {
-            status: errors.length ? 'unhealthy' : 'healthy',
-            credentials: { email: !!this.email, api_key: !!this.apiKey },
-            ...(errors.length && { errors }),
-            timestamp: new Date().toISOString()
-        };
+        try {
+            const authentication = await misc.getAuthenticationToken(this.email, this.apiKey);
+            return {
+                status: errors.length ? 'unhealthy' : 'healthy',
+                authentication: authentication?.data || null,
+                credentials: { email: !!this.email, api_key: !!this.apiKey },
+                ...(errors.length && { errors }),
+                timestamp: new Date().toISOString()
+            };
+        } catch (error) { throw this.handleApiError(error, 'healthCheck'); }
     }
 
     async pingServer() {
