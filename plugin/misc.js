@@ -1,15 +1,45 @@
-const pingServer = async (options) => {
-    try {
-        // Add your server ping logic here
-        console.log('Pinging server with options:', options);
-        // Example: return await fetch('your-server-url/ping');
-        return { status: 'success', message: 'Server ping successful' };
-    } catch (error) {
-        console.error('Error pinging server:', error);
-        throw error;
+const constants = require('./constants');
+const axios = require('axios');
+
+const HEADERS = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+
+function handleAxiosError(error) {
+    if (error.response) {
+        const { data = {}, status } = error.response;
+        throw { status: data.status || 'API_ERROR', message: data.message || `HTTP ${status} error`, httpStatus: status };
     }
+    if (error.request) { throw { status: 'NETWORK_ERROR', message: 'No response from server.' }; }
+    throw { status: 'REQUEST_ERROR', message: error.message || 'Unknown error' };
+}
+
+module.exports = { 
+    pingServer, 
+    getAuthenticationToken 
 };
 
-module.exports = {
-    pingServer,
+async function pingServer(event = 'ping') {
+    try {
+        const { data } = await axios.get(
+            `${constants.server.API_URL}${constants.server.API_VERSION}`,
+            { headers: HEADERS, params: { event } }
+        );
+        return data;
+    } catch (error) {
+        handleAxiosError(error);
+    }
 }
+
+async function getAuthenticationToken(email, apiKey) {
+    if (typeof email !== 'string' || !email) throw new Error('Email is required');
+    if (typeof apiKey !== 'string' || !apiKey) throw new Error('API Key is required');
+    try {
+        const { data } = await axios.get(
+            `${constants.server.API_URL}${constants.server.API_VERSION}/authentication`,
+            { headers: HEADERS, params: { email, api_key: apiKey } }
+        );
+        return data;
+    } catch (error) {
+        handleAxiosError(error);
+    }
+}
+
