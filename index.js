@@ -1,6 +1,17 @@
 const authentication = require('./plugin/providers/authentication.js');
 const misc = require('./plugin/providers/misc.js');
 
+module.exports = (options) => {
+    const plugin = new BlockMapPlugin(options);
+    return {
+        ...plugin,
+        pingServer: () => plugin.pingServer(),
+        healthCheck: () => plugin.healthCheck(),
+        getAuthenticationToken: () => plugin.getAuthenticationToken(),
+        getAllCountries: () => plugin.getAllCountries(),
+    };
+};
+
 class BlockMapPlugin {
     constructor({ EMAIL, API_KEY } = {}) {
         this.email = EMAIL;
@@ -53,14 +64,10 @@ class BlockMapPlugin {
             return await authentication.getAuthenticationToken(this.email, this.apiKey);
         } catch (error) { throw this.handleApiError(error, 'getAuthenticationToken'); }
     }
-}
 
-module.exports = (options) => {
-    const plugin = new BlockMapPlugin(options);
-    return {
-        ...plugin,
-        pingServer: () => plugin.pingServer(),
-        healthCheck: () => plugin.healthCheck(),
-        getAuthenticationToken: () => plugin.getAuthenticationToken(),
-    };
-};
+    async getAllCountries() {
+        try {
+            return await misc.getAllCountries();
+        } catch (error) { throw this.handleApiError(error, 'getAllCountries'); }
+    }
+}

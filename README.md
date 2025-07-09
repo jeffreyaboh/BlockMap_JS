@@ -300,6 +300,50 @@ try {
 }
 ```
 
+---
+
+#### `getAllCountries()`
+
+Retrieves a list of all supported countries from the BlockMap.dev API.
+
+**Syntax:**
+```javascript
+const result = await blockMap.getAllCountries();
+```
+
+**Parameters:** None
+
+**Returns:** `Promise<GetAllCountriesResult>`
+
+**Response Format:**
+```javascript
+{
+    data: [
+        {
+            name: string,      // Country name
+            code: string,      // ISO 3166-1 alpha-2 country code
+            // ... other country-specific data
+        }
+    ]
+}
+```
+
+**Example Usage:**
+```javascript
+try {
+    const countriesResult = await blockMap.getAllCountries();
+    const countries = countriesResult.data;
+    
+    console.log('🌍 Supported Countries:');
+    countries.forEach(country => {
+        console.log(`  - ${country.name} (${country.code})`);
+    });
+    
+} catch (error) {
+    console.error('❌ Failed to get countries:', error.message);
+}
+```
+
 ## 🔐 Authentication
 
 The plugin requires valid credentials to interact with the BlockMap.dev API:

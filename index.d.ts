@@ -31,10 +31,22 @@ declare module '@ethion/blockmap-js' {
     [key: string]: any;
   }
 
+  interface Country {
+    name: string;
+    code: string;
+    [key: string]: any;
+  }
+
+  interface GetAllCountriesResult {
+    data: Country[];
+    [key: string]: any;
+  }
+
   interface BlockMapPlugin {
     healthCheck(): Promise<HealthCheckResult>;
     pingServer(): Promise<PingResult>;
     getAuthenticationToken(): Promise<AuthenticationResult>;
+    getAllCountries(): Promise<GetAllCountriesResult>;
   }
 
   function BlockMapJS(options: BlockMapOptions): BlockMapPlugin;

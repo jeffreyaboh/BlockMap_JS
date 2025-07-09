@@ -13,7 +13,8 @@ function handleAxiosError(error) {
 }
 
 module.exports = { 
-    pingServer
+    pingServer,
+    getAllCountries,
 };
 
 async function pingServer(event = 'ping') {
@@ -26,3 +27,12 @@ async function pingServer(event = 'ping') {
     } catch (error) { handleAxiosError(error); }
 }
 
+async function getAllCountries() {
+    try {
+        const { data } = await axios.get(
+            `${constants.server.API_URL}${constants.server.API_VERSION}/misc/countries`,
+            { headers: HEADERS }
+        );
+        return data;
+    } catch (error) { handleAxiosError(error); }
+}

@@ -10,11 +10,11 @@ const blockMap = require('../../index.js')({
 
 module.exports = { }
 
-const pingServer = async () => {
+const run = async () => {
     try {
-        const result = await blockMap.healthCheck();
+        const result = await blockMap.getAllCountries();
         console.log(result);
     } catch (error) { console.error(error); }
 }
 
-pingServer();
+run();
