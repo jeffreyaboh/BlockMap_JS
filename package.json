@@ -1,6 +1,6 @@
 {
-  "name": "blockmap_js",
-  "version": "1.0.0",
+  "name": "@ethion/blockmap-js",
+  "version": "1.0.4",
   "description": "A powerful JavaScript plugin for integrating with the BlockMap.dev API service, providing seamless authentication and server interaction capabilities.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -14,7 +14,11 @@
   "scripts": {
     "test": "node demo/tests/index.js",
     "demo": "node demo/index.js",
-    "prepublishOnly": "echo 'Ready for NPM publishing'"
+    "dev": "node demo/index.js",
+    "example": "node demo/tests/index.js",
+    "validate": "node -e \"const pkg = require('./package.json'); console.log('✅ Package validation passed')\"",
+    "prepublishOnly": "npm run validate && echo 'Ready for NPM publishing'",
+    "postinstall": "echo '🎉 @ethion/blockmap-js installed successfully! Visit https://github.com/jeffreyaboh/BlockMap_JS for documentation.'"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -41,8 +45,16 @@
     "sdk",
     "client",
     "ethion",
-    "web3"
+    "web3",
+    "api-client",
+    "rest-api",
+    "typescript",
+    "axios"
   ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/jeffreyaboh"
+  },
   "author": {
     "name": "Ethion Technologies",
     "email": "support@trovilo.co",

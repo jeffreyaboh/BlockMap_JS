@@ -1,4 +1,4 @@
-declare module 'blockmap_js' {
+declare module '@ethion/blockmap-js' {
   interface BlockMapOptions {
     EMAIL: string;
     API_KEY: string;
