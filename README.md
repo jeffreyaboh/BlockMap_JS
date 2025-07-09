@@ -98,35 +98,57 @@ quickTest();
 import BlockMapJS from '@ethion/blockmap-js';
 
 const blockMap = BlockMapJS({
-    EMAIL: process.env.BLOCKMAP_EMAIL,
-    API_KEY: process.env.BLOCKMAP_API_KEY
-});
-
-// Using async/await
-const health = await blockMap.healthCheck();
-```
-
-### TypeScript Usage
-```typescript
-import BlockMapJS from '@ethion/blockmap-js';
-
-interface BlockMapConfig {
-    EMAIL: string;
-    API_KEY: string;
-}
-
-const config: BlockMapConfig = {
     EMAIL: 'your-email@example.com',
     API_KEY: 'your-api-key-here'
-};
-
-const blockMap = BlockMapJS(config);
-
-// Type-safe operations
-const health: HealthCheckResult = await blockMap.healthCheck();
+});
 ```
 
 ## 📖 API Reference
+
+All methods return a `Promise`.
+
+### `healthCheck()`
+Performs a comprehensive health check, verifying credentials and connectivity.
+
+- **Returns**: `Promise<HealthCheckResult>`
+
+### `pingServer()`
+Pings the BlockMap server to check for availability.
+
+- **Returns**: `Promise<PingResult>`
+
+### `getAuthenticationToken()`
+Retrieves a fresh authentication token.
+
+- **Returns**: `Promise<AuthenticationResult>`
+
+### `getAllCountries()`
+Fetches a list of all supported countries.
+
+- **Returns**: `Promise<GetAllCountriesResult>`
+
+### `getFiatHistoricalData(options)`
+Retrieves historical data for a specified fiat currency.
+
+-   `options` **(Object)**:
+    -   `currency` **(String)**: The currency symbol (e.g., `'USD'`, `'EUR'`).
+-   **Returns**: `Promise<GetFiatHistoricalDataResult>`
+
+**Example:**
+```javascript
+async function fetchFiatData() {
+    try {
+        const data = await blockMap.getFiatHistoricalData({ currency: 'USD' });
+        console.log('Fiat Historical Data:', data);
+    } catch (error) {
+        console.error('❌ Error fetching fiat data:', error.message);
+    }
+}
+
+fetchFiatData();
+```
+
+## ⚙️ Advanced Configuration
 
 ### Constructor
 
@@ -342,6 +364,30 @@ try {
 } catch (error) {
     console.error('❌ Failed to get countries:', error.message);
 }
+```
+
+---
+
+#### `getFiatHistoricalData(options)`
+
+Retrieves historical data for a specified fiat currency.
+
+-   `options` **(Object)**:
+    -   `currency` **(String)**: The currency symbol (e.g., `'USD'`, `'EUR'`).
+-   **Returns**: `Promise<GetFiatHistoricalDataResult>`
+
+**Example:**
+```javascript
+async function fetchFiatData() {
+    try {
+        const data = await blockMap.getFiatHistoricalData({ currency: 'USD' });
+        console.log('Fiat Historical Data:', data);
+    } catch (error) {
+        console.error('❌ Error fetching fiat data:', error.message);
+    }
+}
+
+fetchFiatData();
 ```
 
 ## 🔐 Authentication

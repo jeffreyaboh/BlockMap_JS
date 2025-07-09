@@ -42,11 +42,27 @@ declare module '@ethion/blockmap-js' {
     [key: string]: any;
   }
 
+  interface GetFiatHistoricalDataOptions {
+    currency: string;
+  }
+
+  interface FiatHistoricalData {
+    timestamp: string;
+    value: number;
+    [key: string]: any;
+  }
+
+  interface GetFiatHistoricalDataResult {
+    data: FiatHistoricalData[];
+    [key: string]: any;
+  }
+
   interface BlockMapPlugin {
     healthCheck(): Promise<HealthCheckResult>;
     pingServer(): Promise<PingResult>;
     getAuthenticationToken(): Promise<AuthenticationResult>;
     getAllCountries(): Promise<GetAllCountriesResult>;
+    getFiatHistoricalData(options: GetFiatHistoricalDataOptions): Promise<GetFiatHistoricalDataResult>;
   }
 
   function BlockMapJS(options: BlockMapOptions): BlockMapPlugin;

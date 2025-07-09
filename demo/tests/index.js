@@ -12,7 +12,9 @@ module.exports = { }
 
 const run = async () => {
     try {
-        const result = await blockMap.getAllCountries();
+        const result = await blockMap.getFiatHistoricalData({
+            currency: 'NGN'
+        });
         console.log(result);
     } catch (error) { console.error(error); }
 }
