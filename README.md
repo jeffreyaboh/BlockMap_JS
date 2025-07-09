@@ -174,11 +174,7 @@ const result = await blockMap.healthCheck();
 ```javascript
 {
     status: 'healthy' | 'unhealthy',
-    authentication: {
-        token: string,
-        expires: string,
-        user: object
-    } | null,
+    auth_token: string | null,
     credentials: {
         email: boolean,    // true if email is properly configured
         api_key: boolean   // true if API key is properly configured

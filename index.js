@@ -34,7 +34,7 @@ class BlockMapPlugin {
             const auth = await authentication.getAuthenticationToken(this.email, this.apiKey);
             return {
                 status: errors.length ? 'unhealthy' : 'healthy',
-                authentication: auth?.data || null,
+                auth_token: auth?.data?.auth_token || null,
                 credentials: { email: !!this.email, api_key: !!this.apiKey },
                 ...(errors.length && { errors }),
                 timestamp: new Date().toISOString()

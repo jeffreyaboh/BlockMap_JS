@@ -6,7 +6,7 @@ declare module '@ethion/blockmap-js' {
 
   interface HealthCheckResult {
     status: 'healthy' | 'unhealthy';
-    authentication: any | null;
+    auth_token: string | null;
     credentials: {
       email: boolean;
       api_key: boolean;
@@ -24,8 +24,8 @@ declare module '@ethion/blockmap-js' {
 
   interface AuthenticationResult {
     data: {
-      token: string;
-      expires: string;
+      api_key: string;
+      auth_token: string;
       [key: string]: any;
     };
     [key: string]: any;
