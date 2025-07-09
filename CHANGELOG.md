@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0] - 2025-07-09
+
+### Added
+- 🎉 **Initial Release** - First official release of BlockMap JS Plugin
+- 🔑 **Authentication System** - Secure email and API key authentication
+- 🏥 **Health Check** - Comprehensive system health monitoring
+- 🌐 **Server Ping** - Connectivity testing and response time measurement
+- 🔧 **TypeScript Support** - Full TypeScript definitions and type safety
+- 📱 **Universal Compatibility** - Works in Node.js, browsers, and serverless environments
+- ⚡ **Lightweight Design** - Minimal dependencies (only axios)
+- 🛡️ **Error Handling** - Comprehensive validation and error reporting
+- 📚 **Complete Documentation** - Detailed README with examples and best practices
+- 🎨 **Visual Branding** - Official BlockMap.dev logo and professional presentation
+
+### Features
+- Email and API key based authentication
+- Real-time health monitoring
+- Server connectivity testing
+- Comprehensive error handling and validation
+- TypeScript first design with full type definitions
+- Framework integrations (Express.js, Next.js, React)
+- Advanced usage patterns (retry logic, rate limiting, circuit breaker)
+- Production-ready with thorough testing examples
+
 ## [1.0.5] - 2025-07-09
 
 ### Added

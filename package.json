@@ -1,6 +1,6 @@
 {
   "name": "@ethion/blockmap-js",
-  "version": "1.0.5",
+  "version": "1.0.0",
   "description": "A powerful JavaScript plugin for integrating with the BlockMap.dev API service, providing seamless authentication and server interaction capabilities.",
   "main": "index.js",
   "types": "index.d.ts",
