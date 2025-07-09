@@ -18,7 +18,8 @@
     "example": "node demo/tests/index.js",
     "validate": "node -e \"const pkg = require('./package.json'); console.log('✅ Package validation passed')\"",
     "prepublishOnly": "npm run validate && echo 'Ready for NPM publishing'",
-    "postinstall": "echo '🎉 @ethion/blockmap-js installed successfully! Visit https://github.com/jeffreyaboh/BlockMap_JS for documentation.'"
+    "postinstall": "echo '🎉 @ethion/blockmap-js installed successfully! Visit https://github.com/jeffreyaboh/BlockMap_JS for documentation.'",
+    "publish": "npm publish --access public"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -64,5 +65,8 @@
   "bugs": {
     "url": "https://github.com/jeffreyaboh/BlockMap_JS/issues"
   },
-  "homepage": "https://github.com/jeffreyaboh/BlockMap_JS#readme"
+  "homepage": "https://github.com/jeffreyaboh/BlockMap_JS#readme",
+  "publishConfig": {
+    "access": "public"
+  }
 }
