@@ -1,5 +1,5 @@
-const authentication = require('./plugin/authentication.js');
-const misc = require('./plugin/misc.js');
+const authentication = require('./plugin/providers/authentication.js');
+const misc = require('./plugin/providers/misc.js');
 
 class BlockMapPlugin {
     constructor({ EMAIL, API_KEY } = {}) {

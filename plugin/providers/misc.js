@@ -1,4 +1,4 @@
-const constants = require('./constants');
+const constants = require('../system/constants');
 const axios = require('axios');
 
 const HEADERS = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
