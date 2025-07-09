@@ -1,5 +1,9 @@
 # BlockMap JS Plugin
 
+<div align="center">
+  <img src="https://blockmap.dev/images/logo.png" alt="BlockMap.dev Logo" width="200" />
+</div>
+
 [![NPM Version](https://img.shields.io/npm/v/@ethion/blockmap-js.svg)](https://www.npmjs.com/package/@ethion/blockmap-js)
 [![NPM Downloads](https://img.shields.io/npm/dm/@ethion/blockmap-js.svg)](https://www.npmjs.com/package/@ethion/blockmap-js)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
